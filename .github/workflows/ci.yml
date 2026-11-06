@@ -1,46 +1,56 @@
 name: CI
 
-permissions:
-  contents: read
-
 on:
-  pull_request:
-    types:
-      - opened
-      - edited
-      - synchronize
-      - reopened
-  workflow_call:
+  push:
+  workflow_dispatch:
+
+permissions: {}
 
 jobs:
   build:
-    name: Code standards & build
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    permissions:
+      contents: read # check out the repo
 
     steps:
-      - name: "☁️ Checkout repository"
-        uses: actions/checkout@v7
-
-      - name: "📦 Install pnpm"
-        uses: pnpm/action-setup@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          version: "11.3.0"
+          persist-credentials: false
 
-      - name: Use Node.js
-        uses: actions/setup-node@v7
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31.11.1
+
+      - name: Lint
+        run: nix develop --no-update-lock-file --command just check
+
+      - name: Build
+        run: nix develop --no-update-lock-file --command just build
+
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
-          node-version: "24"
-          cache: "pnpm"
+          path: "dist/"
 
-      - name: "📦 Install dependencies"
-        run: pnpm install --frozen-lockfile
+  deploy:
+    if: github.ref_name == 'main'
+    needs: build
 
-      - name: "🔎 Lint code"
-        run: pnpm run lint
+    # Prevent concurrent deploys, run in order
+    concurrency:
+      group: deploy
+      cancel-in-progress: false
 
-      - name: "📝 Checking code format"
-        run: pnpm run format:check
+    runs-on: ubuntu-latest
 
-      - name: "🚀 Build the project"
-        run: pnpm run build
+    permissions:
+      pages: write # Deploying to GitHub Pages
+      id-token: write # verify deployments
+
+    # Recommended to deploy to this environment in docs
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

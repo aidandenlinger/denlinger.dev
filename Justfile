@@ -1,0 +1,23 @@
+# Open a dev server
+dev: install-deps
+    pnpm run dev
+
+# Create a final build of the site
+build: install-deps
+    pnpm run build
+
+# Install pnpm dependencies
+install-deps:
+    pnpm install --frozen-lockfile
+
+# Check formatting/linting
+check: install-deps
+    nix flake check
+    pnpm run format:check
+    pnpm run lint
+
+# Autofix formatting issues
+fix: install-deps
+    nix run nixpkgs#rumdl -- check --config "MD013.reflow=true" --fix
+    nix fmt
+    pnpm format
