@@ -34,10 +34,6 @@ export default {
     recentPosts: "Recent Posts",
     allPosts: "All Posts",
   },
-  footer: {
-    copyright: "Copyright",
-    allRightsReserved: "All rights reserved.",
-  },
   pages: {
     tagTitle: "Tag",
     tagDesc: "All the articles with the tag",

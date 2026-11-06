@@ -1,5 +1,5 @@
-# pnpm < 10.5 refuses a workspace file without `packages`
-packages: ["."]
+minimumReleaseAge: 4320
+trustPolicy: no-downgrade
 allowBuilds:
   esbuild: true
   sharp: true
