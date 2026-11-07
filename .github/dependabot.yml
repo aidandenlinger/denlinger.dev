@@ -1,0 +1,48 @@
+version: 2
+# Overall note: This is a static site that I'm not hosting myself, so I can't really deploy security
+# vulnerabilities. The biggest risk is the tooling I'm running on my local dev computer, which I'm
+# not exposing to the internet. So I think it's safer to take updates slow so I don't pull in a
+# compromised dependency, rather than rapidly update.
+updates:
+  # Github Actions: installs nix and deploys site
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    cooldown:
+      default-days: 7
+
+  # Nix flake: pulls in node and pnpm
+  - package-ecosystem: "nix"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      flake:
+        patterns:
+          - "*"
+    cooldown:
+      default-days: 7
+
+  # Pnpm: Site building deps (ex astro)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      npm:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      npm-security:
+        applies-to: security-updates
+        patterns:
+          - "*"
+    cooldown:
+      default-days: 7
+      # Wait for a semver version to mature before adopting it
+      semver-major-days: 30
