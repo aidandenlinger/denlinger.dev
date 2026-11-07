@@ -3,7 +3,7 @@ dev: install-deps
     pnpm run dev
 
 # Create a final build of the site
-build: install-deps
+build: check
     pnpm run build
 
 # Install pnpm dependencies
