@@ -18,6 +18,5 @@ check: install-deps
 
 # Autofix formatting issues
 fix: install-deps
-    nix run nixpkgs#rumdl -- check --config "MD013.reflow=true" --fix
     nix fmt
     pnpm format

@@ -37,7 +37,8 @@ license.
 
 [Sat Naing]: https://satnaing.dev/
 [AstroPaper]: https://github.com/satnaing/astro-paper
-[AstroPaper documentation]: https://github.com/satnaing/astro-paper#-documentation
+[AstroPaper documentation]:
+  https://github.com/satnaing/astro-paper#-documentation
 [Nix]: https://nixos.org/
 [Node.js]: https://nodejs.org
 [pnpm]: https://pnpm.io/
