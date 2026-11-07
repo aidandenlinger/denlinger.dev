@@ -1,0 +1,52 @@
+/* Register design tokens for Tailwind v4 */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --font-app: var(--font-google-sans-code);
+}
+
+/*
+ * I used https://material-foundation.github.io/material-theme-builder/ default green theme
+ */
+
+/* Light theme values */
+:root,
+[data-theme="light"] {
+  /* --md-sys-color-surface */
+  --background: rgb(249 250 239);
+  /* --md-sys-color-on-surface */
+  --foreground: rgb(26 28 22);
+  /* --md-sys-color-primary */
+  --accent: rgb(76 102 43);
+  /* --md-sys-color-on-primary */
+  --accent-foreground: rgb(255 255 255);
+  /* --md-sys-color-surface-container */
+  --muted: rgb(238 239 227);
+  /* --md-sys-color-on-surface-variant */
+  --muted-foreground: rgb(68 72 61);
+  /* --md-sys-color-outline */
+  --border: rgb(117 121 108);
+}
+
+/* Dark theme values */
+[data-theme="dark"] {
+  /* --md-sys-color-surface */
+  --background: rgb(18 20 14);
+  /* --md-sys-color-on-surface */
+  --foreground: rgb(226 227 216);
+  /* --md-sys-color-primary */
+  --accent: rgb(177 209 138);
+  /* --md-sys-color-on-primary */
+  --accent-foreground: rgb(31 55 1);
+  /* --md-sys-color-surface-container */
+  --muted: rgb(30 32 26);
+  /* --md-sys-color-on-surface-variant */
+  --muted-foreground: rgb(197 200 186);
+  /* --md-sys-color-outline */
+  --border: rgb(143 146 133);
+}
