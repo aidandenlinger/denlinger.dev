@@ -27,6 +27,9 @@ site uses!
 
 ## Contributing
 
+This is my personal site,
+so I do not want unexpected contributions from others.
+
 ## License
 
 See [LICENSE.md](./LICENSE.md), as code and editorial content is licensed
