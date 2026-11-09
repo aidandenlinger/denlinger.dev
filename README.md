@@ -27,6 +27,9 @@ site uses!
 
 ## Contributing
 
+This is my personal site,
+so I do not want unexpected contributions from others.
+
 ## License
 
 See [LICENSE.md](./LICENSE.md), as code and editorial content is licensed
@@ -37,8 +40,7 @@ license.
 
 [Sat Naing]: https://satnaing.dev/
 [AstroPaper]: https://github.com/satnaing/astro-paper
-[AstroPaper documentation]:
-  https://github.com/satnaing/astro-paper#-documentation
+[AstroPaper documentation]: https://github.com/satnaing/astro-paper#-documentation
 [Nix]: https://nixos.org/
 [Node.js]: https://nodejs.org
 [pnpm]: https://pnpm.io/
