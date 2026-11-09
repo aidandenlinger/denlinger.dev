@@ -38,6 +38,12 @@
               nixfmt.enable = true; # This flake
               just.enable = true; # Justfile
               zizmor.enable = true; # GH Actions
+              # prettier formats markdown,
+              # but doesn't lint it (ie dead link scanning).
+              # it's printWidth setting also breaks
+              # existing line breaks.
+              # so additionally use rumdl
+              rumdl-check.enable = true; # Markdown
             };
           };
         };

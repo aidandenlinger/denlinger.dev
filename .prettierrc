@@ -3,7 +3,6 @@
   "semi": true,
   "tabWidth": 2,
   "printWidth": 80,
-  "proseWrap": "always",
   "singleQuote": false,
   "jsxSingleQuote": false,
   "trailingComma": "es5",
