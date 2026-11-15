@@ -1,2 +1,3 @@
 /.github/workflows/ @aidandenlinger
 /pnpm-lock.yaml @aidandenlinger
+/flake.lock @aidandenlinger
