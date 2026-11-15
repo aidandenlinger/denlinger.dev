@@ -2,8 +2,7 @@ import type { APIRoute } from "astro";
 
 // https://github.com/ai-robots-txt/ai.robots.txt/blob/main/robots.txt
 // at 04e0048d7bf9c709c5abe64a577aba2e2f8ccd16 (11/5/2026)
-const getRobotsTxt = (sitemapURL: URL) => `
-User-agent: __usage_ai-training
+const getRobotsTxt = (sitemapURL: URL) => `User-agent: __usage_ai-training
 User-agent: AddSearchBot
 User-agent: AgentDataBot
 User-agent: AgentTimes
